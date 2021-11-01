@@ -12,7 +12,7 @@ public class SentinelLinkImpl implements Link.Iface {
     private static final Logger log = LoggerFactory.getLogger(SentinelLinkImpl.class);
 
     @Override
-    public Pong ping(Request body) throws TException {
-        return new Pong(1, "done", Role.SENTINEL, new Info(List.of(new Target("localhost", 123, Role.SENTINEL, true))));
+    public Response ping(Request body) throws TException {
+        return new Response(1, "success", List.of(new Report("localhost", 100, true)));
     }
 }

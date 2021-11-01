@@ -2,8 +2,8 @@ package com.arloor.watchdog.sentinel.watcher;
 
 import com.arloor.watchdog.sentinel.exception.ClientAbortException;
 import com.arloor.watchdog.thrift.Link;
-import com.arloor.watchdog.thrift.Pong;
 import com.arloor.watchdog.thrift.Request;
+import com.arloor.watchdog.thrift.Response;
 import org.apache.thrift.TApplicationException;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
@@ -40,7 +40,7 @@ public class Client implements AutoCloseable {
         closed.set(true);
     }
 
-    public Pong ping() throws ClientAbortException {
+    public Response ping() throws ClientAbortException {
         if (closed.get()) {
             throw new ClientAbortException();
         }
@@ -66,7 +66,7 @@ public class Client implements AutoCloseable {
             pool.execute(() -> {
                 try (Client localhost = new Client("localhost", 9090)) {
                     for (int i = 0; i < 5; i++) {
-                        Pong pong = localhost.ping();
+                        Response pong = localhost.ping();
                         log.info("{}", pong);
                     }
                 } catch (TTransportException e) {

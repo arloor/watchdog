@@ -12,13 +12,13 @@ public class Link {
 
   public interface Iface {
 
-    public Pong ping(Request request) throws org.apache.thrift.TException;
+    public Response ping(Request request) throws org.apache.thrift.TException;
 
   }
 
   public interface AsyncIface {
 
-    public void ping(Request request, org.apache.thrift.async.AsyncMethodCallback<Pong> resultHandler) throws org.apache.thrift.TException;
+    public void ping(Request request, org.apache.thrift.async.AsyncMethodCallback<Response> resultHandler) throws org.apache.thrift.TException;
 
   }
 
@@ -42,7 +42,7 @@ public class Link {
       super(iprot, oprot);
     }
 
-    public Pong ping(Request request) throws org.apache.thrift.TException
+    public Response ping(Request request) throws org.apache.thrift.TException
     {
       send_ping(request);
       return recv_ping();
@@ -55,7 +55,7 @@ public class Link {
       sendBase("ping", args);
     }
 
-    public Pong recv_ping() throws org.apache.thrift.TException
+    public Response recv_ping() throws org.apache.thrift.TException
     {
       ping_result result = new ping_result();
       receiveBase(result, "ping");
@@ -83,16 +83,16 @@ public class Link {
       super(protocolFactory, clientManager, transport);
     }
 
-    public void ping(Request request, org.apache.thrift.async.AsyncMethodCallback<Pong> resultHandler) throws org.apache.thrift.TException {
+    public void ping(Request request, org.apache.thrift.async.AsyncMethodCallback<Response> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       ping_call method_call = new ping_call(request, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class ping_call extends org.apache.thrift.async.TAsyncMethodCall<Pong> {
+    public static class ping_call extends org.apache.thrift.async.TAsyncMethodCall<Response> {
       private Request request;
-      public ping_call(Request request, org.apache.thrift.async.AsyncMethodCallback<Pong> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public ping_call(Request request, org.apache.thrift.async.AsyncMethodCallback<Response> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.request = request;
       }
@@ -105,7 +105,7 @@ public class Link {
         prot.writeMessageEnd();
       }
 
-      public Pong getResult() throws org.apache.thrift.TException {
+      public Response getResult() throws org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new java.lang.IllegalStateException("Method call not finished!");
         }
@@ -174,7 +174,7 @@ public class Link {
       return processMap;
     }
 
-    public static class ping<I extends AsyncIface> extends org.apache.thrift.AsyncProcessFunction<I, ping_args, Pong> {
+    public static class ping<I extends AsyncIface> extends org.apache.thrift.AsyncProcessFunction<I, ping_args, Response> {
       public ping() {
         super("ping");
       }
@@ -183,10 +183,10 @@ public class Link {
         return new ping_args();
       }
 
-      public org.apache.thrift.async.AsyncMethodCallback<Pong> getResultHandler(final org.apache.thrift.server.AbstractNonblockingServer.AsyncFrameBuffer fb, final int seqid) {
+      public org.apache.thrift.async.AsyncMethodCallback<Response> getResultHandler(final org.apache.thrift.server.AbstractNonblockingServer.AsyncFrameBuffer fb, final int seqid) {
         final org.apache.thrift.AsyncProcessFunction fcall = this;
-        return new org.apache.thrift.async.AsyncMethodCallback<Pong>() { 
-          public void onComplete(Pong o) {
+        return new org.apache.thrift.async.AsyncMethodCallback<Response>() { 
+          public void onComplete(Response o) {
             ping_result result = new ping_result();
             result.success = o;
             try {
@@ -230,7 +230,7 @@ public class Link {
         return false;
       }
 
-      public void start(I iface, ping_args args, org.apache.thrift.async.AsyncMethodCallback<Pong> resultHandler) throws org.apache.thrift.TException {
+      public void start(I iface, ping_args args, org.apache.thrift.async.AsyncMethodCallback<Response> resultHandler) throws org.apache.thrift.TException {
         iface.ping(args.request,resultHandler);
       }
     }
@@ -617,7 +617,7 @@ public class Link {
     private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new ping_resultStandardSchemeFactory();
     private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new ping_resultTupleSchemeFactory();
 
-    public @org.apache.thrift.annotation.Nullable Pong success; // required
+    public @org.apache.thrift.annotation.Nullable Response success; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -684,7 +684,7 @@ public class Link {
     static {
       java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Pong.class)));
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Response.class)));
       metaDataMap = java.util.Collections.unmodifiableMap(tmpMap);
       org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(ping_result.class, metaDataMap);
     }
@@ -693,7 +693,7 @@ public class Link {
     }
 
     public ping_result(
-      Pong success)
+      Response success)
     {
       this();
       this.success = success;
@@ -704,7 +704,7 @@ public class Link {
      */
     public ping_result(ping_result other) {
       if (other.isSetSuccess()) {
-        this.success = new Pong(other.success);
+        this.success = new Response(other.success);
       }
     }
 
@@ -718,11 +718,11 @@ public class Link {
     }
 
     @org.apache.thrift.annotation.Nullable
-    public Pong getSuccess() {
+    public Response getSuccess() {
       return this.success;
     }
 
-    public ping_result setSuccess(@org.apache.thrift.annotation.Nullable Pong success) {
+    public ping_result setSuccess(@org.apache.thrift.annotation.Nullable Response success) {
       this.success = success;
       return this;
     }
@@ -748,7 +748,7 @@ public class Link {
         if (value == null) {
           unsetSuccess();
         } else {
-          setSuccess((Pong)value);
+          setSuccess((Response)value);
         }
         break;
 
@@ -910,7 +910,7 @@ public class Link {
           switch (schemeField.id) {
             case 0: // SUCCESS
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.success = new Pong();
+                struct.success = new Response();
                 struct.success.read(iprot);
                 struct.setSuccessIsSet(true);
               } else { 
@@ -969,7 +969,7 @@ public class Link {
         org.apache.thrift.protocol.TTupleProtocol iprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
         java.util.BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.success = new Pong();
+          struct.success = new Response();
           struct.success.read(iprot);
           struct.setSuccessIsSet(true);
         }
